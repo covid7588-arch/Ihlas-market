@@ -3,63 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IHLAS Super App</title>
+    <title>IHLAS Market</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="signup-page" class="page">
-        <div class="auth-card">
-            <h2>IHLAS Market</h2>
-            <input type="text" id="full-name" placeholder="ሙሉ ስም">
-            <input type="tel" id="phone" placeholder="ስልክ ቁጥር">
-            <button class="btn-primary" onclick="handleSignup()">ይግቡ</button>
-        </div>
-    </div>
-
-    <div id="main-app" class="page" style="display:none;">
-        <header class="app-bar">
-            <span id="page-title">IHLAS MARKET</span>
-            <div class="cart-icon">🛒</div>
+    <div id="main-app">
+        <header class="top-bar">
+            <div class="side-btn" onclick="showTab('menu')">☰</div>
+            <div class="app-logo">Ihlas Market</div>
+            <div class="side-btn" onclick="showTab('profile')">👤</div>
         </header>
 
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="ምርት ይፈልጉ..." onkeyup="searchProducts()">
+        </div>
+
         <div id="home-content" class="tab-content">
-            <div class="categories">
-                <span class="active">ሁሉም</span><span>ጫማዎች</span><span>ቦርሳዎች</span>
+            <div class="category-header">
+                <button onclick="showSubCat('selling')">ብዛት ይዘዙ (Selling Challenge)</button>
+                <button onclick="showSubCat('location')">ኑ አብረን እንስራ (Network)</button>
             </div>
+            
             <div id="product-list" class="product-grid"></div>
         </div>
 
-        <div id="menu-content" class="tab-content" style="display:none;">
-            <div class="menu-list">
-                <div class="menu-item" onclick="alert('Fund Service')">💰 Fund Service</div>
-                <div class="menu-item" onclick="alert('Challenge')">🏆 Challenge</div>
-                <div class="menu-item" onclick="alert('Find Gig')">🎸 Find Gig</div>
-                <div class="menu-item" onclick="copyAffiliate()">🔗 My Affiliate Links</div>
-                <div class="menu-item" onclick="alert('Transaction')">📊 Transaction</div>
-                <div class="menu-item" onclick="showTab('profile')">⚙️ Setting</div>
-            </div>
-        </div>
-
-        <div id="profile-content" class="tab-content" style="display:none;">
-            <div class="profile-header">
-                <div class="avatar">👤</div>
-                <h3 id="u-name">User</h3>
-                <p id="u-phone">+251...</p>
-            </div>
-            <div class="menu-list">
-                <div class="menu-item">🌐 Language: <b>Amharic</b></div>
-                <div class="menu-item" onclick="alert('Express Mode ON')">⚡ Express Order</div>
-                <div class="menu-item">💵 Currency: <b>ETB</b></div>
-                <div class="menu-item" onclick="shareApp()">📤 Share Link</div>
-                <div class="menu-item danger" onclick="deleteAccount()">🗑️ Delete Account</div>
-                <div class="menu-item logout" onclick="logout()">🚪 Log Out</div>
+        <div id="payment-page" class="tab-content" style="display:none;">
+            <div class="receipt-card">
+                <h3>💰 የክፍያ መረጃ</h3>
+                <div class="bank-box">
+                    <p>ንግድ ባንክ: <b>1000123456789</b></p>
+                    <p>ቴሌብር: <b>0914717239</b></p>
+                </div>
+                <p class="warning">⚠️ ግዴታ፡ የከፈሉበትን ደረሰኝ Screenshot አድርገው ይላኩ!</p>
+                <div class="social-send">
+                    <button onclick="sendTo('tg')">Telegram</button>
+                    <button onclick="sendTo('wa')">WhatsApp</button>
+                </div>
             </div>
         </div>
 
         <nav class="bottom-nav">
-            <div class="nav-item" onclick="showTab('home')">🏠<span>Home</span></div>
-            <div class="nav-item" onclick="showTab('menu')">📜<span>Menu</span></div>
-            <div class="nav-item" onclick="showTab('profile')">👤<span>Profile</span></div>
+            <div onclick="showTab('home')">🏠<br>Home</div>
+            <div onclick="showTab('menu')">📜<br>Menu</div>
+            <div onclick="showTab('profile')">👤<br>Profile</div>
         </nav>
     </div>
     <script src="script.js"></script>
